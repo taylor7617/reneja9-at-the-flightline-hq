@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RENÉJA9 × FlightLine | Neon Covenant Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- OPTIONAL THREE.JS FOR FUTURE UPGRADE -->
+  <!-- <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script> -->
+
+  <style>
+    :root {
+      --neon-pink: #ff2bdc;
+      --neon-cyan: #00fff0;
+      --neon-green: #1aff00;
+      --neon-purple: #7a00ff;
+      --bg-dark: #050510;
+      --panel-dark: #0b0b1a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #120025, var(--bg-dark));
+      color: #eaeaf5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== PRELOADER ===== */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: var(--neon-cyan);
+      font-family: Orbitron, monospace;
+      letter-spacing: 0.25em;
+      text-shadow: 0 0 15px rgba(0,255,240,0.8);
+      animation: pulse 1.4s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 5, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 255, 240, 0.2);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: Orbitron, monospace;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 12px rgba(0, 255, 240, 0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #cfd2ff;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(255, 43, 220, 0.25);
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 14px rgba(255, 43, 220, 0.6);
+      transform: translateY(-1px);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 1.5rem 6rem;
+      overflow: hidden;
+    }
+
+    .scanlines::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: conic-gradient(from 180deg, var(--neon-pink), var(--neon-cyan), var(--neon-green), var(--neon-purple), var(--neon-pink));
+      opacity: 0.16;
+      filter: blur(140px);
+      animation: slowSpin 28s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes slowSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-family: Orbitron, monospace;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      margin: 0 0 1.2rem;
+      color: #ffffff;
+      text-shadow:
+        0 0 10px rgba(255, 43, 220, 0.6),
+        0 0 20px rgba(0, 255, 240, 0.5);
+      animation: flicker 4s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      4% { opacity: 0.9; }
+      8% { opacity: 1; }
+      100% { opacity: 0.98; }
+    }
+
+    .hero p {
+      color: #cdd2ff;
+      margin-bottom: 2.75rem;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-block;
+      padding: 0.95rem 1.8rem;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #050510;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 16px rgba(0, 255, 240, 0.9);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn.alt {
+      color: #fff;
+      background: transparent;
+      border: 1px solid var(--neon-pink);
+      box-shadow: 0 0 12px rgba(255, 43, 220, 0.8);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 0 28px rgba(0, 255, 240, 1);
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 6rem 1.5rem;
+    }
+
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: Orbitron, monospace;
+      letter-spacing: 0.25em;
+      font-size: 0.85rem;
+      color: var(--neon-pink);
+      margin-bottom: 1.6rem;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .art-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(11,11,26,0.8), rgba(5,5,16,0.96));
+      border: 1px solid rgba(0, 255, 240, 0.28);
+      border-radius: 1.4rem;
+      overflow: hidden;
+      box-shadow: 0 0 18px rgba(0, 255, 240, 0.18);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .art-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent);
+      transform: translateX(-120%);
+      transition: transform 0.6s ease;
+    }
+
+    .art-card:hover::after {
+      transform: translateX(120%);
+    }
+
+    .art-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 36px rgba(255, 43, 220, 0.4);
+    }
+
+    .art-thumb {
+      height: 240px;
+      background: radial-gradient(circle at top, #24003b, #060010);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Orbitron, monospace;
+      letter-spacing: 0.22em;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 16px rgba(0, 255, 240, 0.8);
+      font-size: 0.85rem;
+    }
+
+    .art-info {
+      padding: 1.3rem 1.4rem 1.6rem;
+    }
+
+    .art-title {
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.45rem;
+    }
+
+    .art-meta {
+      font-size: 0.8rem;
+      color: #9aa3ff;
+      margin-bottom: 1rem;
+    }
+
+    .art-status {
+      display: inline-block;
+      font-family: Orbitron, monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(0, 255, 240, 0.12);
+      border: 1px solid rgba(0, 255, 240, 0.45);
+      color: var(--neon-cyan);
+    }
+
+    /* ===== CLOSED LOOP / REGISTRY ===== */
+    .closed-loop {
+      max-width: 760px;
+      margin: 0 auto 2rem;
+      padding: 2rem;
+      border: 1px dashed rgba(255, 43, 220, 0.55);
+      border-radius: 1.6rem;
+      background: rgba(10, 0, 25, 0.55);
+      box-shadow: 0 0 32px rgba(255, 43, 220, 0.3) inset;
+      line-height: 1.9;
+      font-size: 0.92rem;
+      color: #d6d9ff;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+      color: #9aa3ff;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body class="scanlines">
+
+  <div id="preloader">INITIALIZING ARCHIVE</div>
+
+  <header>
+    <div class="nav">
+      <div class="brand">RENÉJA9 × FLIGHTLINE</div>
+      <div class="nav-links">
+        <a href="#gallery">Gallery</a>
+        <a href="#registry">Registry</a>
+        <a href="#intake">Intake</a>
+        <a href="#map">Closed Map</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>NEON COVENANT ARCHIVE</h1>
+      <p>
+        1‑of‑1 physical creations sealed into permanent digital authority.
+        Art enters as signal. Authority exits as law.
+      </p>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn">ENTER GALLERY</a>
+        <a href="#registry" class="btn alt">VIEW REGISTRY</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="section-wrap">
+      <div class="section-title">01 — ACTIVE GALLERY</div>
+      <div class="gallery-grid">
+        <div class="art-card">
+          <div class="art-thumb">PEN · 0001</div>
+          <div class="art-info">
+            <div class="art-title">Neon Covenant I</div>
+            <div class="art-meta">Hand-built · 1 of 1</div>
+            <span class="art-status">QUEUED</span>
+          </div>
+        </div>
+
+        <div class="art-card">
+          <div class="art-thumb">PEN · 0002</div>
+          <div class="art-info">
+            <div class="art-title">City Pulse // Cyan</div>
+            <div class="art-meta">Hand-built · 1 of 1</div>
+            <span class="art-status">ACTIVATED</span>
+          </div>
+        </div>
+
+        <div class="art-card">
+          <div class="art-thumb">PEN · 0003</div>
+          <div class="art-info">
+            <div class="art-title">Halo // Midnight</div>
+            <div class="art-meta">Hand-built · 1 of 1</div>
+            <span class="art-status">DELIVERED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="registry">
+    <div class="section-wrap">
+      <div class="section-title">02 — PROOF REGISTRY</div>
+      <div class="closed-loop">
+        Each RENÉJA9 PEN and PINS‑on‑PENS covenant is mirrored here as a permanent, time‑stamped authority record.
+        This layer binds physical origin, digital classification, activation state, and legacy status.
+      </div>
+    </div>
+  </section>
+
+  <section id="intake">
+    <div class="section-wrap">
+      <div class="section-title">03 — COMMISSION & ACTIVATION</div>
+      <div class="closed-loop">
+        All new builds enter through the RENÉJA9 × FlightLine intake system and are auto‑queued for construction,
+        verification, and optional covenant activation.
+      </div>
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="#" class="btn">OPEN INTAKE</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="map">
+    <div class="section-wrap">
+      <div class="section-title">04 — CLOSED‑LOOP MAP</div>
+      <div class="closed-loop">
+        Only activated and covenant‑sealed artifacts appear here.
+        Public view mirrors authority state without exposing unsecured raw location data.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    RENÉJA9 × FlightLine — Neon Covenant Archive<br />
+    Physical Art · Digital Authority · Living Proof
+  </footer>
+
+  <script>
+    // Simple preloader fade
+    window.addEventListener('load', function () {
+      var pre = document.getElementById('preloader');
+      pre.style.opacity = '0';
+      pre.style.pointerEvents = 'none';
+      setTimeout(function () { pre.style.display = 'none'; }, 900);
+    });
+  </script>
+
+</body>
+</html>
