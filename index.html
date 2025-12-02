@@ -4,9 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RENÉJA9 × FlightLine | Neon Covenant Gallery</title>
+
+  <!-- Favicon using RJ9 crest -->
+  <link rel="icon" type="image/png" href="assets/logo/rj9-crest.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- OPTIONAL THREE.JS FOR FUTURE UPGRADE -->
   <!-- <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script> -->
@@ -72,11 +79,14 @@
     }
 
     .brand {
-      font-family: Orbitron, monospace;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 12px rgba(0, 255, 240, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand img {
+      height: 46px;
+      filter: drop-shadow(0 0 12px rgba(0,255,240,0.7));
     }
 
     .nav-links {
@@ -114,6 +124,11 @@
       text-align: center;
       padding: 5rem 1.5rem 6rem;
       overflow: hidden;
+      background-image: url("assets/logo/reneja9-wordmark.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 38vw;
+      background-blend-mode: screen;
     }
 
     .scanlines::after {
@@ -135,7 +150,14 @@
       content: "";
       position: absolute;
       inset: -40%;
-      background: conic-gradient(from 180deg, var(--neon-pink), var(--neon-cyan), var(--neon-green), var(--neon-purple), var(--neon-pink));
+      background: conic-gradient(
+        from 180deg,
+        var(--neon-pink),
+        var(--neon-cyan),
+        var(--neon-green),
+        var(--neon-purple),
+        var(--neon-pink)
+      );
       opacity: 0.16;
       filter: blur(140px);
       animation: slowSpin 28s linear infinite;
@@ -310,7 +332,7 @@
       color: var(--neon-cyan);
     }
 
-    /* ===== CLOSED LOOP / REGISTRY ===== */
+    /* ===== CLOSED LOOP / REGISTRY / MINDSET ===== */
     .closed-loop {
       max-width: 760px;
       margin: 0 auto 2rem;
@@ -339,12 +361,15 @@
 
   <header>
     <div class="nav">
-      <div class="brand">RENÉJA9 × FLIGHTLINE</div>
+      <div class="brand">
+        <img src="assets/logo/reneja9-wordmark.png" alt="RENÉJA9 Wordmark" />
+      </div>
       <div class="nav-links">
         <a href="#gallery">Gallery</a>
         <a href="#registry">Registry</a>
         <a href="#intake">Intake</a>
         <a href="#map">Closed Map</a>
+        <a href="#mindset">Mindset</a>
       </div>
     </div>
   </header>
@@ -353,7 +378,7 @@
     <div class="hero-content">
       <h1>NEON COVENANT ARCHIVE</h1>
       <p>
-        1‑of‑1 physical creations sealed into permanent digital authority.
+        1-of-1 physical creations sealed into permanent digital authority.
         Art enters as signal. Authority exits as law.
       </p>
       <div class="hero-cta">
@@ -401,7 +426,7 @@
     <div class="section-wrap">
       <div class="section-title">02 — PROOF REGISTRY</div>
       <div class="closed-loop">
-        Each RENÉJA9 PEN and PINS‑on‑PENS covenant is mirrored here as a permanent, time‑stamped authority record.
+        Each RENÉJA9 PEN and PINS-on-PENS covenant is mirrored here as a permanent, time-stamped authority record.
         This layer binds physical origin, digital classification, activation state, and legacy status.
       </div>
     </div>
@@ -411,7 +436,7 @@
     <div class="section-wrap">
       <div class="section-title">03 — COMMISSION & ACTIVATION</div>
       <div class="closed-loop">
-        All new builds enter through the RENÉJA9 × FlightLine intake system and are auto‑queued for construction,
+        All new builds enter through the RENÉJA9 × FlightLine intake system and are auto-queued for construction,
         verification, and optional covenant activation.
       </div>
       <div style="text-align:center; margin-top:2.5rem;">
@@ -422,10 +447,28 @@
 
   <section id="map">
     <div class="section-wrap">
-      <div class="section-title">04 — CLOSED‑LOOP MAP</div>
+      <div class="section-title">04 — CLOSED-LOOP MAP</div>
       <div class="closed-loop">
-        Only activated and covenant‑sealed artifacts appear here.
+        Only activated and covenant-sealed artifacts appear here.
         Public view mirrors authority state without exposing unsecured raw location data.
+      </div>
+    </div>
+  </section>
+
+  <section id="mindset">
+    <div class="section-wrap">
+      <div class="section-title">05 — MINDSET IS KEY</div>
+      <div class="closed-loop" style="text-align:center;">
+        <img
+          src="assets/icons/mindset-key.png"
+          alt="Mindset Key"
+          style="max-height:180px; margin-bottom:1.5rem;"
+        />
+        <p>
+          Every RENÉJA9 build begins with mindset. The key is forged before the pen moves.
+          This icon represents the covenant that no PEN, PIN, or map position is assigned
+          without intentional thought and purpose.
+        </p>
       </div>
     </div>
   </section>
