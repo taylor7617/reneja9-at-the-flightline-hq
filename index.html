@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RENÉJA9 × FlightLine | Neon Covenant Gallery</title>
 
-  <!-- Favicon using RJ9 crest -->
-  <link rel="icon" type="image/png" href="assets/logo/rj9-crest.png">
+  <!-- Favicon uses RJ9 crest -->
+  <link rel="icon" type="image/png" href="assets/logo/rj9-logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,9 +14,6 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap"
     rel="stylesheet"
   />
-
-  <!-- OPTIONAL THREE.JS FOR FUTURE UPGRADE -->
-  <!-- <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script> -->
 
   <style>
     :root {
@@ -39,7 +36,7 @@
       overflow-x: hidden;
     }
 
-    /* ===== PRELOADER ===== */
+    /* PRELOADER */
     #preloader {
       position: fixed;
       inset: 0;
@@ -114,7 +111,7 @@
       transform: translateY(-1px);
     }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -124,10 +121,10 @@
       text-align: center;
       padding: 5rem 1.5rem 6rem;
       overflow: hidden;
-      background-image: url("assets/logo/reneja9-wordmark.png");
+      background-image: url("assets/logo/reneja9-logo.png");
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 38vw;
+      background-size: 40vw;
       background-blend-mode: screen;
     }
 
@@ -184,14 +181,6 @@
       text-shadow:
         0 0 10px rgba(255, 43, 220, 0.6),
         0 0 20px rgba(0, 255, 240, 0.5);
-      animation: flicker 4s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 1; }
-      4% { opacity: 0.9; }
-      8% { opacity: 1; }
-      100% { opacity: 0.98; }
     }
 
     .hero p {
@@ -231,13 +220,19 @@
       box-shadow: 0 0 12px rgba(255, 43, 220, 0.8);
     }
 
+    .btn.small {
+      padding: 0.65rem 1.2rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+    }
+
     .btn:hover {
       transform: translateY(-3px) scale(1.04);
       box-shadow: 0 0 28px rgba(0, 255, 240, 1);
       background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
     }
 
-    /* ===== SECTIONS ===== */
+    /* SECTIONS */
     section {
       padding: 6rem 1.5rem;
     }
@@ -255,7 +250,7 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ===== GALLERY ===== */
+    /* GALLERY */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -272,19 +267,6 @@
       transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
-    .art-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent);
-      transform: translateX(-120%);
-      transition: transform 0.6s ease;
-    }
-
-    .art-card:hover::after {
-      transform: translateX(120%);
-    }
-
     .art-card:hover {
       transform: translateY(-8px) scale(1.03);
       border-color: var(--neon-pink);
@@ -297,11 +279,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Orbitron, monospace;
-      letter-spacing: 0.22em;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 16px rgba(0, 255, 240, 0.8);
-      font-size: 0.85rem;
+      overflow: hidden;
+    }
+
+    .art-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .art-info {
@@ -317,7 +301,7 @@
     .art-meta {
       font-size: 0.8rem;
       color: #9aa3ff;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     .art-status {
@@ -332,7 +316,10 @@
       color: var(--neon-cyan);
     }
 
-    /* ===== CLOSED LOOP / REGISTRY / MINDSET ===== */
+    .art-actions {
+      margin-top: 1.2rem;
+    }
+
     .closed-loop {
       max-width: 760px;
       margin: 0 auto 2rem;
@@ -353,6 +340,61 @@
       color: #9aa3ff;
       font-size: 0.85rem;
     }
+
+    /* PURCHASE MODAL */
+    .purchase-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1500;
+    }
+
+    .purchase-modal {
+      background: #050515;
+      border-radius: 1.2rem;
+      border: 1px solid rgba(0,255,240,0.4);
+      padding: 2rem;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 32px rgba(0,255,240,0.4);
+    }
+
+    .purchase-modal h3 {
+      font-family: Orbitron, monospace;
+      letter-spacing: 0.18em;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      color: var(--neon-cyan);
+    }
+
+    .purchase-modal p {
+      font-size: 0.9rem;
+      color: #cfd2ff;
+      margin-bottom: 1.5rem;
+    }
+
+    .purchase-modal-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: stretch;
+    }
+
+    .purchase-modal .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    .purchase-modal-close {
+      margin-top: 1.2rem;
+      font-size: 0.7rem;
+      color: #9aa3ff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="scanlines">
@@ -362,7 +404,7 @@
   <header>
     <div class="nav">
       <div class="brand">
-        <img src="assets/logo/reneja9-wordmark.png" alt="RENÉJA9 Wordmark" />
+        <img src="assets/logo/reneja9-logo.png" alt="RENÉJA9 Wordmark" />
       </div>
       <div class="nav-links">
         <a href="#gallery">Gallery</a>
@@ -392,32 +434,95 @@
     <div class="section-wrap">
       <div class="section-title">01 — ACTIVE GALLERY</div>
       <div class="gallery-grid">
+
+        <!-- PEN 0001: Sleek PEN + Sleek CP -->
         <div class="art-card">
-          <div class="art-thumb">PEN · 0001</div>
+          <div class="art-thumb">
+            <!-- replace with real pen image -->
+            <img
+              src="assets/pens/pen-0001.png"
+              alt="RENÉJA9 PEN 0001"
+              class="pen-trigger"
+              data-pen-id="PEN-0001"
+              data-usd-link="https://example.com/stripe-usd-pen-0001"
+              data-rr-link="https://example.com/stripe-rr-pen-0001"
+            />
+          </div>
           <div class="art-info">
             <div class="art-title">Neon Covenant I</div>
-            <div class="art-meta">Hand-built · 1 of 1</div>
+            <div class="art-meta">
+              PEN — Sleek · CP — Sleek · Hand-built · 1 of 1
+            </div>
             <span class="art-status">QUEUED</span>
+            <div class="art-actions">
+              <a href="javascript:void(0);" class="btn small pen-trigger"
+                 data-pen-id="PEN-0001"
+                 data-usd-link="https://example.com/stripe-usd-pen-0001"
+                 data-rr-link="https://example.com/stripe-rr-pen-0001">
+                PURCHASE OPTIONS
+              </a>
+            </div>
           </div>
         </div>
 
+        <!-- PEN 0002: Full PEN + Style CP -->
         <div class="art-card">
-          <div class="art-thumb">PEN · 0002</div>
+          <div class="art-thumb">
+            <img
+              src="assets/pens/pen-0002.png"
+              alt="RENÉJA9 PEN 0002"
+              class="pen-trigger"
+              data-pen-id="PEN-0002"
+              data-usd-link="https://example.com/stripe-usd-pen-0002"
+              data-rr-link="https://example.com/stripe-rr-pen-0002"
+            />
+          </div>
           <div class="art-info">
             <div class="art-title">City Pulse // Cyan</div>
-            <div class="art-meta">Hand-built · 1 of 1</div>
+            <div class="art-meta">
+              PEN — Full · CP — Style · Hand-built · 1 of 1
+            </div>
             <span class="art-status">ACTIVATED</span>
+            <div class="art-actions">
+              <a href="javascript:void(0);" class="btn small pen-trigger"
+                 data-pen-id="PEN-0002"
+                 data-usd-link="https://example.com/stripe-usd-pen-0002"
+                 data-rr-link="https://example.com/stripe-rr-pen-0002">
+                PURCHASE OPTIONS
+              </a>
+            </div>
           </div>
         </div>
 
+        <!-- PEN 0003: Style PEN + Full CP + Covenant -->
         <div class="art-card">
-          <div class="art-thumb">PEN · 0003</div>
+          <div class="art-thumb">
+            <img
+              src="assets/pens/pen-0003.png"
+              alt="RENÉJA9 PEN 0003"
+              class="pen-trigger"
+              data-pen-id="PEN-0003"
+              data-usd-link="https://example.com/stripe-usd-pen-0003"
+              data-rr-link="https://example.com/stripe-rr-pen-0003"
+            />
+          </div>
           <div class="art-info">
             <div class="art-title">Halo // Midnight</div>
-            <div class="art-meta">Hand-built · 1 of 1</div>
+            <div class="art-meta">
+              PEN — Style · CP — Full · PINS-on-PENS Covenant
+            </div>
             <span class="art-status">DELIVERED</span>
+            <div class="art-actions">
+              <a href="javascript:void(0);" class="btn small pen-trigger"
+                 data-pen-id="PEN-0003"
+                 data-usd-link="https://example.com/stripe-usd-pen-0003"
+                 data-rr-link="https://example.com/stripe-rr-pen-0003">
+                VIEW PURCHASE PATH
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -440,6 +545,7 @@
         verification, and optional covenant activation.
       </div>
       <div style="text-align:center; margin-top:2.5rem;">
+        <!-- replace # with your Google Form / Calendly / intake URL -->
         <a href="#" class="btn">OPEN INTAKE</a>
       </div>
     </div>
@@ -460,14 +566,13 @@
       <div class="section-title">05 — MINDSET IS KEY</div>
       <div class="closed-loop" style="text-align:center;">
         <img
-          src="assets/icons/mindset-key.png"
+          src="assets/icons/mindset-is-key.png"
           alt="Mindset Key"
           style="max-height:180px; margin-bottom:1.5rem;"
         />
         <p>
           Every RENÉJA9 build begins with mindset. The key is forged before the pen moves.
-          This icon represents the covenant that no PEN, PIN, or map position is assigned
-          without intentional thought and purpose.
+          No PEN, PIN, or map position is assigned without intentional thought and purpose.
         </p>
       </div>
     </div>
@@ -478,14 +583,67 @@
     Physical Art · Digital Authority · Living Proof
   </footer>
 
+  <!-- PURCHASE MODAL -->
+  <div class="purchase-modal-backdrop" id="purchaseModalBackdrop">
+    <div class="purchase-modal">
+      <h3 id="purchaseModalTitle">PEN PURCHASE</h3>
+      <p>Select how you want to complete this covenant build.</p>
+      <div class="purchase-modal-buttons">
+        <a id="usdLink" href="#" class="btn" target="_blank" rel="noopener noreferrer">
+          PAY WITH USD
+        </a>
+        <a id="rrLink" href="#" class="btn alt" target="_blank" rel="noopener noreferrer">
+          PAY WITH RENÊ RINGS (R&R)
+        </a>
+      </div>
+      <div class="purchase-modal-close" id="purchaseModalClose">
+        Close
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Simple preloader fade
+    // Preloader fade
     window.addEventListener('load', function () {
       var pre = document.getElementById('preloader');
       pre.style.opacity = '0';
       pre.style.pointerEvents = 'none';
       setTimeout(function () { pre.style.display = 'none'; }, 900);
     });
+
+    // Purchase modal logic
+    (function () {
+      var backdrop = document.getElementById('purchaseModalBackdrop');
+      var usdLink = document.getElementById('usdLink');
+      var rrLink = document.getElementById('rrLink');
+      var title = document.getElementById('purchaseModalTitle');
+      var closeBtn = document.getElementById('purchaseModalClose');
+
+      function openModal(penId, usdHref, rrHref) {
+        title.textContent = 'PEN ' + penId + ' — PURCHASE OPTIONS';
+        usdLink.href = usdHref;
+        rrLink.href = rrHref;
+        backdrop.style.display = 'flex';
+      }
+
+      function closeModal() {
+        backdrop.style.display = 'none';
+      }
+
+      document.querySelectorAll('.pen-trigger').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var penId = el.getAttribute('data-pen-id') || 'BUILD';
+          var usdHref = el.getAttribute('data-usd-link') || '#';
+          var rrHref = el.getAttribute('data-rr-link') || '#';
+          openModal(penId, usdHref, rrHref);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) closeModal();
+      });
+    })();
   </script>
 
 </body>
