@@ -248,8 +248,8 @@
     }
 
     .hero-logo img {
-      max-width: 320px;
-      width: 60vw;
+      max-width: 420px;
+      width: 70vw;
       filter:
         drop-shadow(0 0 32px rgba(0,255,240,0.9))
         drop-shadow(0 0 18px rgba(255,43,220,0.7));
@@ -650,6 +650,52 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* MAP GRID */
+    .map-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .map-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+    }
+
+    .map-card {
+      background: radial-gradient(circle at top, #181832, #050515);
+      border-radius: 1.6rem;
+      border: 1px solid rgba(0,255,240,0.35);
+      box-shadow: 0 0 22px rgba(0,255,240,0.25);
+      padding: 1.2rem;
+    }
+
+    .map-card h3 {
+      font-family: Orbitron, monospace;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      margin: 0 0 0.75rem;
+      text-align: center;
+    }
+
+    .map-card iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 1rem;
+      height: 360px;
+    }
+
+    .map-card .btn.small {
+      margin-top: 0.8rem;
+      width: 100%;
+      text-align: center;
+      display: inline-block;
+    }
   </style>
 </head>
 <body class="scanlines">
@@ -682,7 +728,7 @@
 
     <div class="hero-content">
       <div class="hero-logo">
-        <img src="assets/logo/reneja9-logo.png" alt="RENEJA9 Wordmark Large" />
+        <img src="assets/logo/reneja9-wordmark-large.png" alt="RENEJA9 Wordmark Large" />
       </div>
       <div class="hero-subline">RENEJA9 × FLIGHTLINE · NEON COVENANT ARCHIVE</div>
       <h1>ART ARRIVES AS SIGNAL. AUTHORITY DEPARTS AS LAW.</h1>
@@ -708,6 +754,7 @@
         <!-- PEN 0001 — Sleek Build -->
         <div class="art-card" data-tilt>
           <div class="art-thumb">
+            <!-- upload your asset to: assets/pens/pen-0001.png -->
             <img
               src="assets/pens/pen-0001.png"
               alt="RENEJA9 PEN 0001"
@@ -737,6 +784,7 @@
         <!-- PEN 0002 — Half Diamond -->
         <div class="art-card" data-tilt>
           <div class="art-thumb">
+            <!-- upload your asset to: assets/pens/pen-0002.png -->
             <img
               src="assets/pens/pen-0002.png"
               alt="RENEJA9 PEN 0002"
@@ -766,6 +814,7 @@
         <!-- PEN 0003 — Full Diamond -->
         <div class="art-card" data-tilt>
           <div class="art-thumb">
+            <!-- upload your asset to: assets/pens/pen-0003.png -->
             <img
               src="assets/pens/pen-0003.png"
               alt="RENEJA9 PEN 0003"
@@ -795,6 +844,7 @@
         <!-- PEN 0004 — Style Master -->
         <div class="art-card" data-tilt>
           <div class="art-thumb">
+            <!-- upload your asset to: assets/pens/pen-0004.png -->
             <img
               src="assets/pens/pen-0004.png"
               alt="RENEJA9 PEN 0004"
@@ -1143,6 +1193,42 @@
         Public view mirrors authority state without exposing unsecured raw location data.
         Each point on the grid represents a living story: one PEN, one PIN, one city, one covenant.
       </div>
+
+      <div class="map-grid">
+        <!-- Map 2 -->
+        <div class="map-card">
+          <h3>RENEJA9 × FLIGHTLINE — MAP · LAYER II</h3>
+          <iframe
+            src="https://www.google.com/maps/d/u/1/embed?mid=1LblIOaH1g2PviOrtod-4GnVWCJN-tRM"
+            loading="lazy"
+          ></iframe>
+          <a
+            href="https://www.google.com/maps/d/u/1/edit?mid=1LblIOaH1g2PviOrtod-4GnVWCJN-tRM&usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn small alt"
+          >
+            OPEN MAP LAYER II IN NEW TAB
+          </a>
+        </div>
+
+        <!-- Map 3 / Bonus -->
+        <div class="map-card">
+          <h3>RENEJA9 × FLIGHTLINE — MAP · LAYER III (BONUS)</h3>
+          <iframe
+            src="https://www.google.com/maps/d/u/2/embed?mid=1t8ZEVu1kYLnk3Ol1MfOdE40CDfUaDVk"
+            loading="lazy"
+          ></iframe>
+          <a
+            href="https://www.google.com/maps/d/u/2/edit?mid=1t8ZEVu1kYLnk3Ol1MfOdE40CDfUaDVk&usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn small alt"
+          >
+            OPEN MAP LAYER III IN NEW TAB
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1153,7 +1239,7 @@
         <div class="mindset-card">
           <img
             src="assets/icons/mindset-is-key.png"
-            alt="Mindset is Key"
+            alt="Mindset Key"
           />
           <p style="font-size:0.9rem; color:#dbe0ff;">
             Before ink touches paper, mindset forges the covenant. The key is cut in the unseen:
